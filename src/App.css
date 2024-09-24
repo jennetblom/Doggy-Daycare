@@ -9,38 +9,72 @@ body {
   background-color: rgb(0, 238, 255);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+
+.icon {
+  margin-top: 0px;
+  padding-top: 10px;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 20px;
+  left: 50px;
+
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.iconText {
+  position: absolute;
+  top: 210px;
+  left: 85px;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.catalogue-container {
+  border:3px rgb(97, 97, 97) groove;
+  background-color: #e9fcfbd3;
+  width: 800px;
+  border-radius: 50px;
+  padding: 20px;
+  margin-top: 50px;
+  box-shadow: 4px 4px 10px gray;
+}
+.catalogue-container img {
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+  margin-top: 20px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.image {
+  box-shadow: 7px 8px 8px gray;
+  border-radius: 8px;
+  max-width: 500px;
+  max-height: 400px;
+}
+p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+h3{
+  margin: 0px;
+  font-size: 16px;
+}
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 25px;
+  font-size: 12px;
+}
+.button {
+  background-color: #c3fdfad3;
+  border: 1px solid rgb(51, 51, 51);
+  box-shadow: 2px 2px 2px gray;
+}
+.button:hover {
+  background-color: rgb(0, 255, 162);
+}
+h4 {
+  margin: 0px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.doginfo p {
+  font-size: 16px;
+  margin: 0px;
 }
