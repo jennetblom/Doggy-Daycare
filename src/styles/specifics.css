@@ -1,0 +1,38 @@
+.button-select {
+    background-color: transparent;
+    height: 100px;
+    width: 120px;
+    margin: 10px;
+  }
+  .button-select:hover {
+    box-shadow: 2px 2px 2px gray;
+  }
+  .button-select img {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 120px;
+  }
+  .doginfo p {
+    font-size: 16px;
+    margin: 0px;
+  }
+  #doginfoImage {
+    width: 60%;
+  }
+
+  @media (max-width: 700px) {
+
+    .doginfo p {
+      font-size: 12px;
+    }
+
+    .doginfo h2, h3 , h4{
+      font-size: 80%
+    }
+    .doginfo h3 {
+      font-size: rem;
+    }
+    .doginfo h4 {
+      font-size: rem;
+    }
+  }

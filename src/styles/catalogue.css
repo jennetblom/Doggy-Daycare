@@ -1,0 +1,162 @@
+.catalogue-container {
+    border:3px rgb(97, 97, 97) groove;
+    background-color: #e9fcfbd3;
+    width: 60%;
+    margin: 0 auto;
+    border-radius: 30px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 4px 4px 10px gray;
+    flex-wrap: wrap;
+  }
+  .body {
+    margin: 0px;
+    
+  }
+  .dog-item img {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px gray;
+  }
+  .catalogue-container img:hover {
+    transform: scale(1.03);
+  }
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 25px;
+    font-size: 12px;
+  }
+
+
+.flex-container  {
+  display: flex;
+  justify-content: space-around;
+
+  width: 100%;
+}
+.flex-item1{
+  flex: 1;
+}
+.flex-container::after{
+  content: ''; 
+  flex: 1;
+}
+
+.searchbar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-left: 30px;
+  margin-right: 30px;  
+  max-width: 80%;
+  margin: 0 auto;
+}
+  
+#search {
+    flex-grow: 0.3;
+    height: 22px;
+  }
+
+  #button-search {
+    margin-left: 6px;
+    background-color: aqua;
+    border: 1px solid rgb(51, 51, 51);
+    box-shadow: 2px 2px 2px gray;
+    height: 26px;
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  #button-search img {
+     width: 20px;
+     height: 20px;
+     margin: 0 auto;
+  }
+
+
+  
+  .flex-selectContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 10px;
+    align-items: center;
+  }
+  .select {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  @media (max-width: 700px) {
+     
+    h2{
+      font-size: 1rem;
+    }
+    .catalogue-container {
+      padding: 0px;
+      margin: 0 auto;
+      width: 70vw;
+      margin-top: 0px;
+      border-radius: 20px;
+    }
+    .flex-container {
+      flex-direction: column;
+      margin: 0px;
+    }
+    .dog-item img {
+      width: 80%;
+      height: 80%;
+    }
+    .dog-item {
+      margin-bottom: 50px;
+    }
+    .gallery {
+      /* flex-direction: column; */
+      /* border: 2px solid gray; */
+      padding-top: 0px;
+    }
+
+    .flex-selectContainer {
+      flex-direction: column;
+      align-items: center;
+      margin: 0 30px;
+    }
+    .select {
+      align-self:center;
+      width: 170px;
+      margin: 4px;
+      
+    }
+    #search {
+      margin: 5px;
+      width: 100%;
+      max-width: 200px;
+    }
+    .searchbar {
+    margin: 0 auto;
+    justify-content: center;
+     margin-left: 30px;
+     margin-right: 30px;
+      flex-direction: column;
+      align-items: center;
+      max-width: 100%;
+    }
+    #button-search {
+      margin-top: 5px;
+      align-items: center;
+      
+    }
+    .button-container {
+      display: flex;                /* Gör knappen flexibel för justering */
+      justify-content: center;    /* Justera knappen till höger */
+      width: 100%;                  /* Gör containern 100% bredd för att trycka knappen till höger */
+  }
+  }

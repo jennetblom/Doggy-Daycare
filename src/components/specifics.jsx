@@ -4,7 +4,7 @@ import dogicon from '../assets/doggydaycare4.png';
 import altimage from '../assets/dogalt.jpg';
 import leftbutton from '../assets/left.png';
 import rightbutton from '../assets/right.png';
-
+import '../styles/specifics.css';
 
 
 
@@ -32,27 +32,19 @@ const Specifics = ({ dogData, imageErrors, handleError }) => {
             return "their";
         }
     }
-    // const leftclick = () => {
-    //     // dog = dogData[id-2];
-    //     setDog(dogData[id-2]);
-    // }
-    // const rightclick = () => {
-    //     // dog = dogData[id];
-    //     setDog(dogData[id]);
-    // }
     return (
         <section className='doginfo'>
             <Link to="/">
                 <img className="icon" src={dogicon} />
             </Link>
             <h3 className='iconText'>Doggy daycare</h3>
-            <button className='button-select'><img src='https://cdn-icons-png.flaticon.com/128/2722/2722991.png'/></button>
-            <img className='image'
+            
+            <img className='image' id='doginfoImage'
                 src={imageErrors[id - 1] || !dog.img ? altimage : dog.img}
                 onError={() => handleError(id - 1)}
                 alt={dog.name}
             />
-             <button className='button-select'><img src='https://cdn-icons-png.flaticon.com/128/2722/2722985.png'/></button>
+             
 
             <h2>Extra information about the dog</h2>
             <h3> {dog.name} is a {dog.sex} and a {dog.age}-year-old {capitalize(dog.breed)}</h3>

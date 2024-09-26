@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import dogicon from '../assets/doggydaycare4.png';
 import altimage from '../assets/dogalt.jpg';
 import search from '../assets/search.png';
-
+import '../styles/catalogue.css';
 
 const Catalogue = ({ dogData, imageErrors, handleError }) => {
 
@@ -25,7 +25,7 @@ const Catalogue = ({ dogData, imageErrors, handleError }) => {
 
     const handleFilter = () => {
         const newFilteredDogs = dogData.filter(dog => {
-            const matchesPresent = presentFilter === '' || (presentFilter === 'present' && dog.present) || (presentFilter === 'not-present' && !dog.present); 
+            const matchesPresent = presentFilter === '' || (presentFilter === 'present' && dog.present) || (presentFilter === 'not-present' && !dog.present);
             const matchesAge = selectedAge === '' || parseInt(dog.age, 10) === parseInt(selectedAge, 10);
             const matchesSex = selectedSex === '' || dog.sex === selectedSex;
             const matchesBreed = selectedBreed === '' || dog.breed === selectedBreed;
@@ -46,66 +46,74 @@ const Catalogue = ({ dogData, imageErrors, handleError }) => {
     }
 
     return (
-        <section>
-            <Link to="/">
-                <img className="icon" src={dogicon} />
-            </Link>
-            <h3 className='iconText'>Doggy daycare</h3>
+        <section className='flex-container'>
+            <div className='flex-item1'>
+                <Link to="/">
+                    <img className="icon" src={dogicon} />
+                </Link>
+                <h3 className='iconText'>Doggy daycare</h3>
+            </div>
 
             <div className='catalogue-container'>
+
                 <h2>Catalogue of all the dogs</h2>
+                <div className='flex-selectContainer'>
+                    <select className='select' onChange={(e) => setSelectedAge(e.target.value)}>
+                        <option value="">All ages</option>
+                        {ages.map((age) => (
+                            <option key={age} value={age}>{age}</option>
+                        ))}
+                    </select>
+                    <select className='select' onChange={(e) => setSelectedBreed(e.target.value)}>
+                        <option value="" >Select breed</option>
+                        {uniqueBreeds.map((breed, index) => (
+                            <option key={index} value={breed}>{capitalize(breed)}</option>
+                        ))}
+                    </select>
+                    <select className='select' onChange={(e) => setSelectedSex(e.target.value)}>
+                        <option value="">Select gender</option>
+                        <option value="female">Female</option>
+                        <option value="male">Male</option>
+                    </select>
+                    <select className='select' onChange={(e) => setPresentFilter(e.target.value)} >
+                        <option value="">Select presence</option>
+                        <option value="present">Present</option>
+                        <option value="not-present">Not present</option>
+                    </select>
+                </div>
 
-                <select className='select' onChange={(e) => setSelectedAge(e.target.value)}>
-                    <option value="">All ages</option>
-                    {ages.map((age) => (
-                        <option key={age} value={age}>{age}</option>
-                    ))}
-                </select>
-                <select className='select' onChange={(e) => setSelectedBreed(e.target.value)}>
-                    <option value="">All breeds</option>
-                    {uniqueBreeds.map((breed, index) => (
-                        <option key={index} value={breed}>{capitalize(breed)}</option>
-                    ))}
-                </select>
-                <select className='select' onChange={(e) => setSelectedSex(e.target.value)}>
-                    <option value="">Select gender</option>
-                    <option value="female">Female</option>
-                    <option value="male">Male</option>
-                </select>
-                <select onChange={(e) => setPresentFilter(e.target.value)} >
-                    <option value="">Select presence</option>
-                    <option value="present">Present</option>
-                    <option value="not-present">Not present</option>
-                </select>
+                
+                <div className='searchbar'>
+                    <input type="text" placeholder='Search by name...' id='search' value={searchTerm} onChange={handleSearchChange} />
+                    <div className="button-container">
+                    <button id='button-search' onClick={handleFilter}>
+                        <img src='https://cdn-icons-png.flaticon.com/128/751/751381.png' />
+                    </button>
+                    </div>      
+                </div>
 
 
-                <br></br>
-                <input type="text" placeholder='Search...' id='search' value={searchTerm} onChange={handleSearchChange} />
-                <button id='button-search' onClick={handleFilter}>
-                    <img src='https://cdn-icons-png.flaticon.com/128/751/751381.png' />
-                </button>
                 <br></br>
                 <div className='gallery'>
                     {filteredDogs.map((dog, index) =>
                         <div key={index} className='dog-item'>
                             <Link to={`/dogs/${index + 1}`}>
-                                <img className='image' src={imageErrors[index] || !dog.img ? altimage : dog.img}
+                                <img className='gallery-image' src={imageErrors[index] || !dog.img ? altimage : dog.img}
                                     onError={() => handleError(index)} />
                             </Link>
                             <h3>{dog.name}</h3>
-                            {/* <p>{capitalize(dog.breed)}, {dog.sex} {dog.age}</p> */}
                             <p>
-                                <span>{capitalize(dog.breed)}</span> | 
+                                <span>{capitalize(dog.breed)}</span> |
                                 <span> {capitalize(dog.sex)} </span> |
-                                <span> {dog.age}</span> 
-                                
-                                </p>
+                                <span> {dog.age}</span>
+
+                            </p>
                             <p style={{ color: dog.present ? 'limeGreen' : 'black' }}>{dog.present ? "Enjoying daycare today" : "Not here today"}</p>
                         </div>
                     )}
                 </div>
-
             </div>
+
         </section>
     )
 }
