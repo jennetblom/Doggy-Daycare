@@ -46,8 +46,6 @@ const Specifics = ({ dogData, imageErrors, handleError }) => {
                     onError={() => handleError(id - 1)}
                     alt={dog.name}
                 />
-
-
                 <h2>Extra information about the dog</h2>
                 <h3> {dog.name} is a {dog.sex} and a {dog.age}-year-old {capitalize(dog.breed)}</h3>
                 <p>The dog is {dog.present ? "currently present at daycare" : "not present at daycare"} right now and {pronoun(dog.sex)} chip number is {dog.chipNumber}. </p>

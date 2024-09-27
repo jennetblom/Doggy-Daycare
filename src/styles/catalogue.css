@@ -25,11 +25,9 @@
     transform: scale(1.03);
   }
   .gallery {
-   
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-
     padding: 25px;
     font-size: 12px;
   }
@@ -121,8 +119,6 @@
       margin-bottom: 50px;
     }
     .gallery {
-      /* flex-direction: column; */
-      /* border: 2px solid gray; */
       padding-top: 0px;
     }
 
@@ -157,17 +153,9 @@
       
     }
     .button-container {
-      display: flex;                /* Gör knappen flexibel för justering */
-      justify-content: center;    /* Justera knappen till höger */
-      width: 100%;                  /* Gör containern 100% bredd för att trycka knappen till höger */
+      display: flex;               
+      justify-content: center;   
+      width: 100%;                 
+
   }
-  /* .icon {
-    margin-top: 20px;
-    margin-bottom: 30px;
- 
-  }
-  .iconText {
-    margin-top: -75px;
-    margin-bottom: 50px;
-  } */
-  }
+}

@@ -6,9 +6,26 @@ import altimage from '../assets/dogalt.jpg';
 import search from '../assets/search.png';
 import '../styles/catalogue.css';
 
+const useDebounce = (value, delay) => {
+    const [debouncedValue, setDebouncedValue] = useState(value);
+
+    useEffect(() => {
+        const handler = setTimeout(() => {
+            setDebouncedValue(value);
+        }, delay);
+
+        return () => {
+            clearTimeout(handler);
+        };
+    }, [value, delay]);
+
+    return debouncedValue;
+};
+
 const Catalogue = ({ dogData, imageErrors, handleError }) => {
 
     const [searchTerm, setSearchTerm] = useState('');
+    const debouncedSearchTerm = useDebounce(searchTerm, 300);
     const [selectedBreed, setSelectedBreed] = useState('');
     const [selectedSex, setSelectedSex] = useState('');
     const [selectedAge, setSelectedAge] = useState('');
@@ -18,6 +35,7 @@ const Catalogue = ({ dogData, imageErrors, handleError }) => {
     if (!dogData || !Array.isArray(dogData) || dogData.length === 0) {
         return <p>No dog data available.</p>;
     }
+
 
     const uniqueBreeds = [...new Set(dogData.map(dog => dog.breed))];
 
@@ -36,12 +54,15 @@ const Catalogue = ({ dogData, imageErrors, handleError }) => {
         console.log('Filtered Dogs:', newFilteredDogs);
         setFilteredDogs(newFilteredDogs);
     }
+    useEffect(() => {
+        handleFilter();
+    }, [debouncedSearchTerm, selectedAge, selectedSex, selectedBreed, presentFilter]);
 
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value);
-        handleFilter();
+        // handleFilter();
     }
-    
+
     function capitalize(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
@@ -83,14 +104,14 @@ const Catalogue = ({ dogData, imageErrors, handleError }) => {
                     </select>
                 </div>
 
-                
+
                 <div className='searchbar'>
                     <input type="text" placeholder='Search by name...' id='search' value={searchTerm} onChange={handleSearchChange} />
                     <div className="button-container">
-                    <button id='button-search' onClick={handleFilter}>
-                        <img src='https://cdn-icons-png.flaticon.com/128/751/751381.png' />
-                    </button>
-                    </div>      
+                        <button id='button-search' onClick={handleFilter}>
+                            <img src='https://cdn-icons-png.flaticon.com/128/751/751381.png' />
+                        </button>
+                    </div>
                 </div>
 
 
@@ -98,6 +119,7 @@ const Catalogue = ({ dogData, imageErrors, handleError }) => {
                 <div className='gallery'>
                     {filteredDogs.map((dog, index) =>
                         <div key={index} className='dog-item'>
+                            {/* <Link to={`/dogs/${index }`}> */}
                             <Link to={`/dogs/${index + 1}`}>
                                 <img className='gallery-image' src={imageErrors[index] || !dog.img ? altimage : dog.img}
                                     onError={() => handleError(index)} />
