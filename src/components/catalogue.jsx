@@ -41,6 +41,7 @@ const Catalogue = ({ dogData, imageErrors, handleError }) => {
         setSearchTerm(e.target.value);
         handleFilter();
     }
+    
     function capitalize(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
