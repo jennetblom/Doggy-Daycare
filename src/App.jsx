@@ -15,7 +15,7 @@ function App() {
   const [imageErrors, setImageErrors] = React.useState({});
   const [dogData, setDogData] = useState(null);
   const [count, setCount] = useState(0);
-  let apiUrl = 'https://api.jsonbin.io/v3/b/66ea6857e41b4d34e4325758';
+  let apiUrl = 'https://api.jsonbin.io/v3/b/6718f170ad19ca34f8bd4adc';
 
   const handleError = (index) => {
     setImageErrors(prevState => ({ ...prevState, [index]: true }));
